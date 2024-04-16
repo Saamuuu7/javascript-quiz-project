@@ -10,12 +10,17 @@ class Quiz {
         this.currentQuestionIndex = 0
     }
 
+
+
+
     // 2. getQuestion()
     getQuestion() {
-
-        return this.questions[this.currentQuestionIndex]
+        //Nos mostrará el número de la pregunta actual
+        const currentQuestion = this.questions[this.currentQuestionIndex]
+        return currentQuestion
 
     }
+
 
     // 3. moveToNextQuestion()
 
@@ -24,18 +29,23 @@ class Quiz {
     }
 
 
+
     // 4. shuffleQuestions()
     shuffleQuestions() {
         this.questions.sort((a, b) => 0.5 - Math.random())
     }
 
 
+
     // 5. checkAnswer(answer)
-    checkAnswer(answer) {
-        if (answer) {
+    checkAnswer(answerToCheck) {
+        const currentQuestion = this.getQuestion() //Reutilizamos el metodo anteriormente usado y se lo asignamos a la variable
+
+        if (answerToCheck === currentQuestion.answer) { //con el .answer accedemos a la propiedad answer del objeto Question
             this.correctAnswers++
         }
     }
+
 
 
 
