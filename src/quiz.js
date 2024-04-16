@@ -2,6 +2,7 @@ class Quiz {
     // YOUR CODE HERE:
     //
     // 1. constructor (questions, timeLimit, timeRemaining)
+
     constructor(questions, timeLimit, timeRemaining) {
         this.questions = questions //array
         this.timeLimit = timeLimit
@@ -14,6 +15,7 @@ class Quiz {
 
 
     // 2. getQuestion()
+
     getQuestion() {
         //Nos mostrará el número de la pregunta actual
         const currentQuestion = this.questions[this.currentQuestionIndex]
@@ -31,6 +33,7 @@ class Quiz {
 
 
     // 4. shuffleQuestions()
+
     shuffleQuestions() {
         this.questions.sort((a, b) => 0.5 - Math.random())
     }
@@ -38,6 +41,7 @@ class Quiz {
 
 
     // 5. checkAnswer(answer)
+
     checkAnswer(answerToCheck) {
         const currentQuestion = this.getQuestion() //Reutilizamos el metodo anteriormente usado y se lo asignamos a la variable
 
@@ -45,7 +49,6 @@ class Quiz {
             this.correctAnswers++
         }
     }
-
 
 
 
@@ -58,4 +61,43 @@ class Quiz {
             return true
         }
     }
+
+
+
+    // 7. filterQuestionsByDifficulty()
+
+    filterQuestionsByDifficulty(difficulty) {
+
+        if (typeof difficulty != "number") {
+            return this.questions
+        }
+
+        const difficultQuestions = this.questions.filter((eachQuestion) => {
+            if (eachQuestion.difficulty === difficulty) {
+                return true
+            } else {
+                return false
+            }
+        })
+
+        this.questions = difficultQuestions
+
+
+    }
+
+
+
+
+    // 8. averageDifficulty()
+
+    averageDifficulty() {
+
+        const sumDifficulties = this.questions.reduce((acc, eachQuestion) => {
+            return acc + eachQuestion.difficulty
+        }, 0)
+
+        const diffAverage = sumDifficulties / this.questions.length
+        return diffAverage
+    }
+
 }
