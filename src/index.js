@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (quiz.timeRemaining == 0) {
       clearInterval(timer)
+      showResults()
     }
 
   }, 1000)
